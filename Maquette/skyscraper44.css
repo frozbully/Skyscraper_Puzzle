@@ -1,15 +1,21 @@
-body {
-  background-color: grey;
+#gamediv {
+  background-color: lightblue;
+  padding: 10px;
+  border-radius: 30%;
 }
 th {
   height: 50px;
   width: 50px;
   background-color: white;
   margin: 10px;
-  border-radius: 10%;
+  border-radius: 9px;
 }
+#active {
+  background-color: pink;
+}
+
 #empty {
-  background-color: grey;
+  background-color: lightblue;
 }
 #arrow {
   border-radius: 50%;
