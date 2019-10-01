@@ -1,0 +1,11 @@
+body {
+  background-color: grey;
+}
+th {
+  height: 50px;
+  width: 50px;
+  background-color: white;
+}
+#empty {
+  background-color: grey;
+}
