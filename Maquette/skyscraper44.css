@@ -5,7 +5,12 @@ th {
   height: 50px;
   width: 50px;
   background-color: white;
+  margin: 10px;
+  border-radius: 10%;
 }
 #empty {
   background-color: grey;
+}
+#arrow {
+  border-radius: 50%;
 }
