@@ -1,44 +1,85 @@
-var gameTab;
-var cel;
-var activeCel;
-var i;
+var activeCell;
 
-function Init() {
-    gameTab = document.querySelectorAll("th");
-    initlisteners();
-}
-
-function initlisteners() {
-  for (i=0;i<6*6;i++) {
-    cel = gameTab[i];
-    if(cel.id == ''){
-      cel.addEventListener("click",function(){makeActive(this);});
-    }
+//On event actions
+function makeActive(cell){
+  /*HTMLElement -> void
+    Change the activeCell to cell*/
+  if (activeCell !== undefined) {
+    activeCell.id = '';
   }
-  window.addEventListener("keydown",function(event){writeActive(event.keyCode);},true);
+  activeCell = cell;
+  activeCell.id = "active";
 }
-
-function makeActive(cel){
-  if (activeCel !== undefined) {
-    activeCel.id = '';
-  }
-  activeCel = cel;
-  activeCel.id = "active";
-}
-
-function writeActive(n){
-  if (activeCel !== undefined) {
-    if (n>96 && n<=100) {
-    activeCel.textContent = n-96;
+function writeActive(cell,keycode,size){
+  /*HTMLElement * int -> void
+    Changes the textContent of a cell*/
+  if (cell !== undefined) {
+    if (keycode>96 && keycode<=96+size) {
+    cell.textContent = keycode-96;
     }
-    if (n === 96){
-      activeCel.textContent = '';
+    if (keycode === 96){
+      cell.textContent = '';
     }
   }
 }
 
+//function getters for addEventListener()
+function getMakeActive(){
+  /*void -> function*/
+  return function(){makeActive(this);}
+}
+function getWriteActive(size){
+  /*void -> function*/
+  return function(event){writeActive(activeCell,event.keyCode,size);};
+}
+
+//Init functions
+function initInnerHTML(tab,size) {
+  /*HTMLElement * int -> HTMLElement[]
+    creates cells to an empty <table>*/
+  var innerhtml=''
+  for (var i=0; i<size+2; i++) {
+    innerhtml += "<tr>";
+    for (var j=0; j<size+2; j++) {
+      if ((i==0 || i==size+1) && (j==0 || j==size+1)) {
+        innerhtml += "<th id=\"corner\"></th>";
+      }else if (i==0 || i==size+1 || j==0 || j==size+1) {
+        innerhtml += "<th id=\"arrow\"></th>";
+      }else {
+        innerhtml += "<th id=\"cell\"></th>";
+      }
+    }
+    innerhtml += "</tr>";
+  }
+  tab.innerHTML = innerhtml;
+  return document.querySelectorAll("th");
+}
+
+function initClickListeners(tab){
+  /*HTMLElement[] -> void
+    creates cells' click callbacks*/
+  var cell;
+  for (var i=0; i<tab.length; i++) {
+    cell = tab[i];
+    if (cell.id == "cell") {
+      cell.addEventListener("click",getMakeActive());
+    }
+  }
+}
+function initKeydownListener(size) {
+  /*void -> void
+    creates keyboard input callback*/
+  window.addEventListener("keydown",getWriteActive(size),true);
+}
+
+function Init(size) {
+  var tab = document.querySelector("#gamediv");
+  tab = initInnerHTML(tab,size);
+  initClickListeners(tab);
+  initKeydownListener(size);
+}
+
+//Main function
 function main() {
-  Init();
-}
-
+}//Do not edit below this line
 main();
