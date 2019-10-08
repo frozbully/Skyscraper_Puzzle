@@ -73,10 +73,12 @@ function initKeydownListener(size) {
 }
 
 function Init(size) {
+  /*int -> HTMLElement[]*/  
   var tab = document.querySelector("#gamediv");
   tab = initInnerHTML(tab,size);
   initClickListeners(tab);
   initKeydownListener(size);
+  return tab;
 }
 
 //Main function
