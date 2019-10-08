@@ -1,7 +1,7 @@
 #gamediv {
   background-color: lightblue;
   padding: 10px;
-  border-radius: 30%;
+  border-radius: 100px;
 }
 th {
   height: 50px;
@@ -14,7 +14,7 @@ th {
   background-color: pink;
 }
 
-#empty {
+#corner {
   background-color: lightblue;
 }
 #arrow {
