@@ -10,7 +10,7 @@ function makeActive(cell){
   activeCell = cell;
   activeCell.id = "active";
 }
-function writeActive(cell,keycode){
+function writeActive(cell,keycode,size){
   /*HTMLElement * int -> void
     Changes the textContent of a cell*/
   if (cell !== undefined) {
@@ -28,9 +28,9 @@ function getMakeActive(){
   /*void -> function*/
   return function(){makeActive(this);}
 }
-function getWriteActive(){
+function getWriteActive(size){
   /*void -> function*/
-  return function(event){writeActive(activeCell,event.keyCode);};
+  return function(event){writeActive(activeCell,event.keyCode,size);};
 }
 
 //Init functions
@@ -59,24 +59,24 @@ function initClickListeners(tab){
   /*HTMLElement[] -> void
     creates cells' click callbacks*/
   var cell;
-  for (var i=0; i<tab.lenght; i++) {
+  for (var i=0; i<tab.length; i++) {
     cell = tab[i];
-    if (cell.id == '') {
+    if (cell.id == "cell") {
       cell.addEventListener("click",getMakeActive());
     }
   }
 }
-function initKeydownListener() {
+function initKeydownListener(size) {
   /*void -> void
     creates keyboard input callback*/
-  window.addEventListener("keydown",getWriteActive(),true);
+  window.addEventListener("keydown",getWriteActive(size),true);
 }
 
 function Init(size) {
   var tab = document.querySelector("#gamediv");
   tab = initInnerHTML(tab,size);
   initClickListeners(tab);
-  initKeydownListener();
+  initKeydownListener(size);
 }
 
 //Main function
