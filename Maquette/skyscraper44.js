@@ -73,7 +73,7 @@ function initKeydownListener(size) {
 }
 
 function Init(size) {
-  /*int -> HTMLElement[]*/  
+  /*int -> HTMLElement[]*/
   var tab = document.querySelector("#gamediv");
   tab = initInnerHTML(tab,size);
   initClickListeners(tab);
@@ -83,5 +83,6 @@ function Init(size) {
 
 //Main function
 function main() {
+  Init(4);
 }//Do not edit below this line
 main();
