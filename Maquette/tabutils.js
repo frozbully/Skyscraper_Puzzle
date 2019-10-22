@@ -1,80 +1,61 @@
 function newBoolTab(n){
-  /*int -> bool[]*/
+  /*int -> bool[][]
+    n = mapsize
+    returns 2n arrays of n*true*/
   var res = new Array;
-  for (var i = 0; i < n; i++) {
-    res[i] = true;
+  for (var i = 0; i < n*2; i++) {
+    res[i] = new Array;
+    for (var j = 0; j < n; j++) {
+      res[i][j] = true;
+    }
   }
   return res;
 }
 
+function rand(tab){
+  /*int[] -> int
+    returns a random value from an array*/
+  return tab[Math.floor(Math.random() * tab.length)];
+}
+
 function inter(tab1, tab2){
   /*bool[] * bool[]-> int[]*/
-  console.log(tab2);
   var res = new Array;
   var c=0;
   for (var i = 0; i < tab1.length; i++) {
     if (tab1[i] && tab2[i]) {
-      res[c] = i+1;
+      res[c] = i;
       c++;
     }
   }
   return res;
 }
 
-function randBool(tab){
-  /*int[] -> int*/
-  return tab[Math.floor(Math.random() * tab.length)];
+function randCell(x,y,boolT){
+  /*int * int * Bool[][] -> int
+    returns a random value for the (x,y)cells
+    (if it returns undefined, if it's not possible)*/
+  var value = rand(inter(boolT[x], boolT[y+ boolT.length/2]));
+  boolT[x][value] = false;
+  boolT[y+ boolT.length/2][value] = false;
+  console.log(value);
+  return value+1
 }
 
-function newTab(n){
-  /*int -> bool[][]
-    n = mapsize*/
-  var res = new Array;
-  for (var i = 0; i < n*2; i++) {
-    res[i] = newBoolTab(n);
-  }
-  return res;
-}
-
-function randSoluce(tab){
-  /*bool[][] -> int[][]*/
-  var res = new Array;
-  for (var i = 0; i < tab.length/2; i++) {
-    res[i]= new Array;
-    for (var j = 0; j< tab.length/2; j++) {
-      res[i][j] = randBool(inter(tab[i] , tab[j+tab.length/2]));
-      tab[i][res[i][j] - 1] = false;
-      tab[j+tab.length/2][res[i][j] - 1] = false;
+function newRandSolution(n){
+  /*int -> int[]
+    returns a random solution for a given mapsize n*/
+    var solution = new Array;
+    var boolT = newBoolTab(n);
+    var x; var y;
+    for (var base=0; base<n; n++) {
+      for (x=base; x<n; x++){
+        solution[x+ n*base] = randCell(x,base,boolT);
+      }
+      for (y=base+1; y<n; y++){
+        solution[base+ n*y] = randCell(base,y,boolT);
+      }
+      console.log(solution);
     }
-  }
-  return res;
-}
-//doesn't work from this point TODO:fix
-function countSkyscrapers(tab){
-  /*int[] -> int*/
-  var count = 0;
-  for (var i = 1; i < tab.length; i++) {
-    if (tab[i-1] < tab[i]) count++;
-  }
-  return count;
-}
-
-function countSkyscrapersBackwards(tab){
-  /*int[] -> int*/
-  var count = 0;
-  for (var i = tab.length-1; i > 1 ; i--) {
-    if (tab[i-1] < tab[i]) count++;
-  }
-  return count;
-}
-
-function findArrows(tab){
-  /*int[][] -> int[]*/
-  var res = new Array;
-  console.log(tab.length);
-  for (var i = 0; i < tab.length; i++){
-    res[i] = countSkyscrapers(tab[i]);
-    res[i+tab.length*2] = countSkyscrapersBackwards(tab[i]);
-  }
-  return res;
+    return solution;
 }
