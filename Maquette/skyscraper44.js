@@ -1,5 +1,5 @@
 var activeCell;
-
+var tharray = new Array;
 //On event actions
 function makeActive(cell){
   /*HTMLElement -> void
@@ -81,8 +81,15 @@ function Init(size) {
   return tab;
 }
 
+function showTab(tab){
+  for (var i = 0; i < tharray.length; i++) {
+    tharray[i].textContent = tab[i];
+  }
+}
+
 //Main function
 function main() {
   Init(4);
+  tharray = document.querySelectorAll("#cell");
 }//Do not edit below this line
 main();
