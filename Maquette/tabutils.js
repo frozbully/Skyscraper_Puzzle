@@ -18,7 +18,7 @@ function rand(tab){ //ok
   return tab[Math.floor(Math.random() * tab.length)];
 }
 
-function inter(tab1, tab2){ //must test
+function inter(tab1, tab2){ //ok
   /*bool[] * bool[]-> int[]*/
   var res = new Array;
   var c=0;
@@ -34,7 +34,7 @@ function inter(tab1, tab2){ //must test
 function randCell(x,y,boolT){ //ok
   /*int * int * Bool[][] -> int
     returns a random value for the (x,y)cells
-    (if it returns undefined, if it's not possible)*/
+    (returns NaN, if it's not possible)*/
   var value = rand(inter(boolT[x], boolT[y+ boolT.length/2]));
   boolT[x][value] = false;
   boolT[y+ boolT.length/2][value] = false;
