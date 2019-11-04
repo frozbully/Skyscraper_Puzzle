@@ -1,4 +1,4 @@
-function newBoolTab(n){ //ok
+function newBoolTab(n){
   /*int -> bool[][]
     n = mapsize
     returns 2n arrays of n*true*/
@@ -12,13 +12,13 @@ function newBoolTab(n){ //ok
   return res;
 }
 
-function rand(tab){ //ok
+function rand(tab){
   /*int[] -> int
     returns a random value from an array*/
   return tab[Math.floor(Math.random() * tab.length)];
 }
 
-function inter(tab1, tab2){ //ok
+function inter(tab1, tab2){
   /*bool[] * bool[]-> int[]*/
   var res = new Array;
   var c=0;
@@ -31,7 +31,7 @@ function inter(tab1, tab2){ //ok
   return res;
 }
 
-function randCell(x,y,boolT){ //ok
+function randCell(x,y,boolT){
   /*int * int * Bool[][] -> int
     returns a random value for the (x,y)cells
     (returns NaN, if it's not possible)*/
@@ -41,4 +41,16 @@ function randCell(x,y,boolT){ //ok
   return value+1
 }
 
-//TODO:Trouver un odre de generation sans faille ou gerer erreur (2 derniers chiffres sur toutes les lignes et colones)
+function newSolution(n){
+  /*int -> int[]
+    returns a valid solution*/
+  var bt = newBoolTab(n);
+  var tab = new Array;
+  for (var x=0; x<n; x++) {
+    for (var y=0; y<n; y++) {
+      //TODO: if randCell = Nan , switch avec y-1
+      tab[x+n*y]=randCell(x,y,bt);
+    }
+  }
+  return tab;
+}
