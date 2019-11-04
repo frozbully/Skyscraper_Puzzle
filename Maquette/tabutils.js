@@ -31,7 +31,7 @@ function inter(tab1, tab2){ //must test
   return res;
 }
 
-function randCell(x,y,boolT){ //must test
+function randCell(x,y,boolT){ //ok
   /*int * int * Bool[][] -> int
     returns a random value for the (x,y)cells
     (if it returns undefined, if it's not possible)*/
@@ -41,20 +41,4 @@ function randCell(x,y,boolT){ //must test
   return value+1
 }
 
-function newRandSolution(n){ //idk
-  /*int -> int[]
-    returns a random solution for a given mapsize n*/
-    var solution = new Array;
-    var boolT = newBoolTab(n);
-    var x; var y;
-    for (var base=0; base<n; n++) {
-      for (x=base; x<n; x++){
-        solution[x+ n*base] = randCell(x,base,boolT);
-      }
-      for (y=base+1; y<n; y++){
-        solution[base+ n*y] = randCell(base,y,boolT);
-      }
-      console.log(solution);
-    }
-    return solution;
-}
+//TODO:Trouver un odre de generation sans faille ou gerer erreur (2 derniers chiffres sur toutes les lignes et colones)

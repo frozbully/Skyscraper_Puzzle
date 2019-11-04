@@ -74,9 +74,9 @@ function initKeydownListener(size) {
 
 function Init(size) {
   /*int -> HTMLElement[]*/
-  var tab = document.querySelector("#gamediv"); // récupérer la zone de création du tableau 
+  var tab = document.querySelector("#gamediv"); // récupérer la zone de création du tableau
   tab = initInnerHTML(tab,size);                // créer le tableau aléatoire
-  initClickListeners(tab);                      // rendre les cellules du tableau clickables 
+  initClickListeners(tab);                      // rendre les cellules du tableau clickables
   initKeydownListener(size);                    // écouter les touches appuyées
   return tab;
 }
