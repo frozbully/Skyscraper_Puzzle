@@ -1,4 +1,4 @@
-function newBoolTab(n){
+function newBoolTab(n){ //ok
   /*int -> bool[][]
     n = mapsize
     returns 2n arrays of n*true*/
@@ -12,13 +12,13 @@ function newBoolTab(n){
   return res;
 }
 
-function rand(tab){
+function rand(tab){ //ok
   /*int[] -> int
     returns a random value from an array*/
   return tab[Math.floor(Math.random() * tab.length)];
 }
 
-function inter(tab1, tab2){
+function inter(tab1, tab2){ //must test
   /*bool[] * bool[]-> int[]*/
   var res = new Array;
   var c=0;
@@ -31,18 +31,17 @@ function inter(tab1, tab2){
   return res;
 }
 
-function randCell(x,y,boolT){
+function randCell(x,y,boolT){ //must test
   /*int * int * Bool[][] -> int
     returns a random value for the (x,y)cells
     (if it returns undefined, if it's not possible)*/
   var value = rand(inter(boolT[x], boolT[y+ boolT.length/2]));
   boolT[x][value] = false;
   boolT[y+ boolT.length/2][value] = false;
-  console.log(value);
   return value+1
 }
 
-function newRandSolution(n){
+function newRandSolution(n){ //idk
   /*int -> int[]
     returns a random solution for a given mapsize n*/
     var solution = new Array;
