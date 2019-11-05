@@ -102,7 +102,7 @@ function showArrows(tab){ //completer la description
       }else if (nn < 3*n) {
         arrows[4*n-1 - (nn%n)].textContent=tab[i][j];
       }else {
-        arrows[2*n+2 - 2*(nn%n)].textContent=tab[i][j];
+        arrows[3*n-2 - 2*(nn%n)].textContent=tab[i][j];
       }
       nn++;
     }
