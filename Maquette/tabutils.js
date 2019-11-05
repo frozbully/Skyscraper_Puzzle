@@ -55,7 +55,8 @@ function randCell(x,y,array){
 
 function newSolution(n){
   /*int -> int[]
-    returns a valid solution*/
+    returns a valid solution
+    or 'error'*/
   var array = newArray(n);
   var res = new Array;
   var value = -1;
@@ -73,7 +74,7 @@ function newSolution(n){
       }
       res[x+n*y] = value;
       if (value === -1) {
-        return 'eror';
+        return 'error';
       }
       array[x][value-1] = 0;
       array[y + n][value-1] = 0;
@@ -83,10 +84,62 @@ function newSolution(n){
   return res;
 }
 
-function newSolutionForce(n){
+function newSolutionForce(n){//completer la description
   var res = new Array;
-  while ((res = newSolution(n))== 'eror') {
-    console.log('eror');
+  while ((res = newSolution(n))== 'error') {
+    console.log('error');
   }
   return res;
+}
+
+function  countSkyscrapers(array){//completer la description
+  /*int[] -> int*/
+  var last = 0;
+  var count = 0;
+  for (var i=0; i<array.length; i++) {
+    if (last < array[i]) {
+      count++;
+      last = array[i];
+    }
+  }
+  return count;
+}
+
+function findArrows(array, n){//completer la description
+  /*int[] -> int[]*/
+  var arrow = new Array;
+  var line = new Array;
+  for (var i=0; i<4; i++){
+    arrow[i] = new Array;
+  }
+  //top
+  for (var i=0; i<n; i++) {
+    for (var j=0; j<n; j++) {
+      line[j] = array[i+n*j];//top->bottom
+    }
+    arrow[0][i] = countSkyscrapers(line);//left -> right
+  }
+  //right
+  for (var i=0; i<n; i++) {
+    for (var j=0; j<n; j++) {
+      line[j] = array[n-j-1 +n*i];//right->left
+    }
+    arrow[1][i] = countSkyscrapers(line);//top->bottom
+  }
+
+  //bottom
+  for (var i=0; i<n; i++) {
+    for (var j=0; j<n; j++) {
+      line[j] = array[(n-i-1)+n*(n-j-1)];//bottom->top
+    }
+    arrow[2][i] = countSkyscrapers(line);//right->left
+  }
+  //left
+  for (var i=0; i<n; i++) {
+    for (var j=0; j<n; j++) {
+      line[j] = array[j +n*(n-i-1)];//left->righ
+    }
+    arrow[3][i] = countSkyscrapers(line);//bottom -> top
+  }
+  return arrow;
 }

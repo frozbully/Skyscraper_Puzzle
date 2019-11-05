@@ -1,5 +1,6 @@
 var activeCell;
 var tharray = new Array;
+var arrows = new Array;
 //On event actions
 function makeActive(cell){
   /*HTMLElement -> void
@@ -74,22 +75,42 @@ function initKeydownListener(size) {
 
 function Init(size) {
   /*int -> HTMLElement[]*/
-  var tab = document.querySelector("#gamediv"); // récupérer la zone de création du tableau
-  tab = initInnerHTML(tab,size);                // créer le tableau aléatoire
-  initClickListeners(tab);                      // rendre les cellules du tableau clickables
-  initKeydownListener(size);                    // écouter les touches appuyées
+  var tab = document.querySelector("#gamediv");   // récupérer la zone de création du tableau
+  tab = initInnerHTML(tab,size);                  // créer le tableau aléatoire
+  initClickListeners(tab);                        // rendre les cellules du tableau clickables
+  initKeydownListener(size);                      // écouter les touches appuyées
+  tharray = document.querySelectorAll("#cell");
+  arrows = document.querySelectorAll("#arrow");
   return tab;
 }
 
-function showTab(tab){
+function showTab(tab){ //completer la description
   for (var i = 0; i < tharray.length; i++) {
     tharray[i].textContent = tab[i];
+  }
+}
+
+function showArrows(tab){ //completer la description
+  var nn=0;
+  var n = tab[0].length
+  for (var i=0; i<tab.length; i++) {
+    for (var j=0; j<tab[i].length; j++) {
+      if (nn<n) {
+        arrows[nn].textContent=tab[i][j];
+      }else if (nn< 2*n) {
+        arrows[n+1 + 2*(nn%n)].textContent=tab[i][j];
+      }else if (nn < 3*n) {
+        arrows[4*n-1 - (nn%n)].textContent=tab[i][j];
+      }else {
+        arrows[2*n+2 - 2*(nn%n)].textContent=tab[i][j];
+      }
+      nn++;
+    }
   }
 }
 
 //Main function
 function main() {
   Init(4);
-  tharray = document.querySelectorAll("#cell");
 }//Do not edit below this line
 main();
