@@ -1,6 +1,7 @@
 var activeCell;
 var tharray = new Array;
 var arrows = new Array;
+var gamesize;
 //On event actions
 function makeActive(cell){
   /*HTMLElement -> void
@@ -81,6 +82,7 @@ function Init(size) {
   initKeydownListener(size);                      // écouter les touches appuyées
   tharray = document.querySelectorAll("#cell");
   arrows = document.querySelectorAll("#arrow");
+  gamesize = size;
   return tab;
 }
 
@@ -107,6 +109,15 @@ function showArrows(tab){ //completer la description
       nn++;
     }
   }
+}
+
+function getTab(x, y){
+  /*int*int -> int*/
+  return Number(tharray[x+y*gamesize].textContent);
+}
+function setTab(x,y,value){
+  /*int*int*int -> void*/
+  tharray[x+y*gamesize].textContent = String(value);
 }
 
 //Main function
