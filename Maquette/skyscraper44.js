@@ -110,7 +110,7 @@ function showArrows(tab){ //completer la description
     }
   }
 }
-
+//tab
 function getTab(x, y){
   /*int*int -> int*/
   return Number(tharray[x+y*gamesize].textContent);
@@ -118,6 +118,52 @@ function getTab(x, y){
 function setTab(x,y,value){
   /*int*int*int -> void*/
   tharray[x+y*gamesize].textContent = String(value);
+}
+//Get arrows
+function getTop(i){
+	/* 0<= i < 4
+	  int -> int*/
+		return Number(arrows[i].textContent);
+}
+function getRight(i){
+	/* 0<= i < 4
+	  int -> int*/
+		return Number(arrows[gamesize+1 + i*2].textContent);
+}
+function getLeft(i){
+	/* 0<= i < 4
+		int -> int*/
+		return Number(arrows[gamesize + i*2].textContent);
+}
+function getBottom(i){
+	/* 0<= i < 4
+		int -> int*/
+		return Number(arrows[3*gamesize + i].textContent);
+}
+//Set showArrows
+function setTop(i, value){
+	/* 0<= i < 4
+	  int -> int*/
+		if(value == 0 || value == undefined){value = '';}
+		return (arrows[i].textContent = String(value));
+}
+function setRight(i, value){
+	/* 0<= i < 4
+	  int -> int*/
+		if(value == 0 || value == undefined){value = '';}
+		return (arrows[gamesize+1 + i*2].textContent = String(value));
+}
+function setLeft(i, value){
+	/* 0<= i < 4
+		int -> int*/
+		if(value == 0 || value == undefined){value = '';}
+		return (arrows[gamesize + i*2].textContent = String(value));
+}
+function setBottom(i, value){
+	/* 0<= i < 4
+		int -> int*/
+		if(value == 0 || value == undefined){value = '';}
+		return (arrows[3*gamesize + i].textContent = String(value));
 }
 
 //Main function
