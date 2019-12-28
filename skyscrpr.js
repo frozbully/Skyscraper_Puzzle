@@ -17,7 +17,7 @@ function add() {
             hours++;
         }
     }
-    
+
     h1.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
 
     timer();
@@ -45,7 +45,7 @@ clear.onclick = function() {
 // sidenavigation ~~~~~~~~~~~~~~~~~~~~~~~~
 
 function openNav() {
-  document.getElementById("mySidenav").style.width = "250px"; 
+  document.getElementById("mySidenav").style.width = "250px";
 }
 
 function closeNav() {
@@ -130,9 +130,9 @@ function initKeydownListener(size) {
 
 function Init(size) {
   /*int -> HTMLElement[]*/
-  var tab = document.querySelector("#gamediv"); // récupérer la zone de création du tableau 
+  var tab = document.querySelector("#gamediv"); // récupérer la zone de création du tableau
   tab = initInnerHTML(tab,size);                // créer le tableau aléatoire
-  initClickListeners(tab);                      // rendre les cellules du tableau clickables 
+  initClickListeners(tab);                      // rendre les cellules du tableau clickables
   initKeydownListener(size);                    // écouter les touches appuyées
   return tab;
 }
@@ -142,6 +142,3 @@ function main() {
   Init(4);
 }//Do not edit below this line
 main();
-
-
-

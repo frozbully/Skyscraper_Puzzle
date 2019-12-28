@@ -115,6 +115,7 @@ function getTab(x, y){
   /*int*int -> int*/
   return Number(tharray[x+y*gamesize].textContent);
 }
+
 function setTab(x,y,value){
   /*int*int*int -> void*/
   tharray[x+y*gamesize].textContent = String(value);
@@ -164,6 +165,223 @@ function setBottom(i, value){
 		int -> int*/
 		if(value == 0 || value == undefined){value = '';}
 		return (arrows[3*gamesize + i].textContent = String(value));
+}
+
+function tabOfRowsGet(tab)
+{
+  var tab = [];
+  for (let i = 0; i < gamesize; i++)
+  {
+    tab[i] = [];
+    for (let j = 0; j < gamesize; j++)
+      tab[i].push(getTab(j, i));
+  }
+  return (tab);
+}
+
+function tabOfColsGet(tab)
+{
+  var tab = [];
+  for (let i = 0; i < gamesize; i++)
+  {
+    tab[i] = [];
+    for (let j = 0; j < gamesize; j++)
+      tab[i].push(getTab(i, j));
+  }
+  return (tab);
+}
+
+function launch() // a ready solved board to test (play)
+{
+  Init(gamesize);
+  //var tab = newSolutionForce(gamesize);
+  //var arr = findArrows(tab, gamesize);
+  setTop(0, 2);
+  setTop(1, 1);
+  setTop(2, 3);
+  setTop(3, 2);
+  setRight(0, 2);
+  setRight(1, 1);
+  setRight(2, 2);
+  setRight(3, 3);
+  setBottom(0, 1);
+  setBottom(1, 3);
+  setBottom(2, 2);
+  setBottom(3, 3);
+  setLeft(0, 2);
+  setLeft(1 , 3);
+  setLeft(2 , 2);
+  setLeft(3 , 1);
+  borders = [];
+  for (let i = 0; i < gamesize; i++)
+    borders.push(getTop(i));
+  for (let i = 0; i < gamesize; i++)
+    borders.push(getRight(i));
+  for (let i = 0; i < gamesize; i++)
+    borders.push(getBottom(i));
+  for (let i = 0; i < gamesize; i++)
+    borders.push(getLeft(i));
+  showArrows(borders);
+  tab = [];
+  setTab(0, 0, 3);
+  setTab(1, 0, 4);
+  setTab(2, 0, 1);
+  setTab(3, 0, 2);
+  setTab(0, 1, 1);
+  setTab(1, 1, 3);
+  setTab(2, 1, 2);
+  setTab(3, 1, 4);
+  setTab(0, 2, 2);
+  setTab(1, 2, 1);
+  setTab(2, 2, 4);
+  setTab(3, 2, 3);
+  setTab(0, 3, 4);
+  setTab(1, 3, 2);
+  setTab(2, 3, 3);
+  setTab(3, 3, 1);
+  for (let i = 0; i < gamesize; i++)
+  {
+    for (let j = 0; j < gamesize; j++)
+      tab.push(getTab(j, i));
+  }
+  a = tabOfRowsGet(tab);
+}
+
+function tabFull(tab) //check if a grid is full or not
+{
+    for (let i = 0; i < gamesize; i++)
+    {
+        for (let j = 0; j < gamesize; j++)
+          if (tab[i][j] == 0)
+            return false;
+    }
+    return true;
+}
+
+function arrayFull(array)
+{
+  for (let i = 0;i < gamesize; i++)
+    if (array[i] == 0)
+      return false;
+  return true;
+}
+
+function arrayCheck(target, array)
+{
+  if (!arrayFull(array))
+    return false;
+  var max = 0;
+  var count = 0;
+  var set = new Set([]);
+  for (let i = 0; i < gamesize; i++)
+  {
+    if (array[i] > max)
+    {
+      max = array[i];
+      count++;
+    }
+    set.add(array[i]);
+  }
+  if (set.size != array.length)
+    return false;
+  return (target == count);
+}
+
+function bordersGet()
+{
+  var borders = [[], [], [], []];
+  for (let i = 0; i < gamesize; i++)
+    borders[0].push(getTop(i));
+  for (let i = 0; i < gamesize; i++)
+    borders[1].push(getRight(i));
+  for (let i = 0; i < gamesize; i++)
+    borders[2].push(getBottom(i));
+  for (let i = 0; i < gamesize; i++)
+    borders[3].push(getLeft(i));
+    return (borders);
+}
+
+function arrayHighlightError(array)
+{
+  try {
+    for (let i = 0; i < 16; i++)
+      array[i].style.background = "red";
+  } catch (e) {
+    console.log("Type error, probably caused while converting NodeList -> array -> NodeList");
+  }
+}
+
+function tabHighlightErrors(tab)
+{
+  var borders = bordersGet();
+  var gridRows = tabOfRowsGet(tab);
+  var gridCols = tabOfColsGet(tab);
+  var thCols = tharrayRowsGet(tharray);
+  var thRows = tharrayColsGet(tharray);
+  for (let i = 0; i < gamesize; i++)
+  {
+    if (!arrayCheck(borders[0][i], gridCols[i])) //collumn
+      arrayHighlightError(thCols[i]);
+    if (!arrayCheck(borders[2][i], gridCols[i].reverse())) //column backwards
+      arrayHighlightError(thCols[i]);
+    if (!arrayCheck(borders[1][i], gridRows[i].reverse()))
+     arrayHighlightError(thRows[i]);
+    if (!arrayCheck(borders[3][i], gridRows[i].reverse()))
+     arrayHighlightError(thRows[i]);
+  }
+}
+
+function tharrayRowsGet(tharray)
+{
+  const array = Array.from(tharray);
+  var res = [];
+  var i = 0;
+  while (i < gamesize * gamesize)
+  {
+      res.push(array.slice(i, i + gamesize));
+      i = i + gamesize;
+  }
+  return (res);
+}
+
+function tharrayColsGet(tharray)
+{
+  var res = [];
+  var i = 0;
+  var temp = [];
+  var j;
+  while (i < gamesize)
+  {
+      j = i;
+      temp = [];
+      while (j < gamesize * gamesize)
+      {
+        temp.push(tharray[j]);
+        j = j + gamesize ;
+      }
+      res.push(temp);
+      i++;
+  }
+  return (res);
+}
+
+function tabCheck(tab)
+{
+  var borders = bordersGet();
+  var gridRows = tabOfRowsGet(tab);
+  var gridCols = tabOfColsGet(tab);
+  for (let i = 0; i < gamesize; i++)
+  {
+    if (!arrayCheck(borders[0][i], gridCols[i])) //collumn
+      return false;
+    if (!arrayCheck(borders[2][i], gridCols[i].reverse())) //column backwards
+      return false;
+    if (!arrayCheck(borders[1][i], gridRows[i].reverse()))
+      return false;
+    if (!arrayCheck(borders[3][i], gridRows[i].reverse()))
+      return false;
+  }
+  return true;
 }
 
 //Main function
