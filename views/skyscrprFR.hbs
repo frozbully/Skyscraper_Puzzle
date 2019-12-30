@@ -1,0 +1,69 @@
+<div class="son">
+<audio src="son/Kerusu_Hatachi.mp3" style="display:none" id="player"></audio>
+<a href="#" ><img src="photos/volume.svg" width="20px" height="20px" alt="Lecture" id="volume"></a>
+<a href="#" ><img src="photos/mute.svg" width="20px" height="20px" alt="Pause" id="mute"></a>
+</div>
+
+  <div class="time" >
+  <h1>
+  <time>00:00:00</time>
+  </h1>
+  </div>
+  <div class="buttons">
+<div id="stop"> Arrêt </div>
+<div id="start"> Lancer </div>
+<div id="clear"> Réinitialiser </div>
+  </div>
+
+
+  <div id ="open" class="menu" onclick="openNav()">&#9776; Menu</div>
+      <div id="mySidenav" class="sidenav">
+  <a src="js/skyscrpr.js" class="closebtn" onclick="closeNav()">&times;</a>
+  <div class="content">
+
+<div id="MyBtn" onclick = "openOver()" >Règles</div>
+ <div id="myOver" class="over">
+   <div class="over-content">
+     <span class="close"  onclick = "closeOver()">&times;</span>
+        <h2> Règles </h2>
+          <p>Chaque puzzle est constitué d'une grille NxN
+    avec des indices sur les côtés (cercle sur le coté).
+    L'objectif est de placer un gratte ciel dans chacune des cases,
+    avec une hauteur entre 1 et N, de manière que deux tours
+     sur une ligne ou une colonne n'aietn pas la même hauteur.
+     De plus, le nombre de grattes ciel visible à partir de la direction
+     de l'indice , est égal à la valeur de cet indice.
+     Notez que la plus haute tour bloque la vue des tours plus
+     courtes se trouvant derrière celle ci.</p>
+   <span class="subtext"> Bonne chance ! </span>
+
+ </div>
+</div>
+
+  <a href="#">Niveaux</a>
+  <a onclick="dropdown()">Langues</a>
+    <div id="myDropdown" class="drpdwn-content">
+        <a href="/EN" >Anglais</a>
+    </div>
+  </div>
+
+</div>
+
+ <div class="buttonsGrid">
+    <div id="restart"> Recommencer </div>
+    <div id="clue"> Indice </div>
+</div>
+
+  <table id="gamediv">
+
+<!---  <script src="/public/js/tabutils.js"></script>
+  <script src="/public/js/skyscrpr.js"></script>
+
+-->
+  </table>
+
+
+<div class="buttonsGrid">
+    <div id="over"> Terminé </div>
+    <div id="newGame"> Nouvelle Partie </div>
+</div>
