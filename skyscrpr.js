@@ -84,7 +84,7 @@ function restart(tab){
   }
 }
 function clue(tab){
-  
+
 }
 //function getters for addEventListener()
 function getMakeActive(){
