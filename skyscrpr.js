@@ -78,7 +78,14 @@ function writeActive(cell,keycode,size){
     }
   }
 }
-
+function restart(tab){
+  for (var i=0; i<tab.length; i++){
+    tab[i].textContent='';
+  }
+}
+function clue(tab){
+  
+}
 //function getters for addEventListener()
 function getMakeActive(){
   /*void -> function*/
@@ -88,12 +95,20 @@ function getWriteActive(size){
   /*void -> function*/
   return function(event){writeActive(activeCell,event.keyCode,size);};
 }
+function getRestart(tab){
+  /*void -> function*/
+  return function(){restart(tab);}
+}
+function getClue(tab){
+  /*void -> function*/
+  return function(){clue(tab);}
+}
 
 //Init functions
 function initInnerHTML(tab,size) {
   /*HTMLElement * int -> HTMLElement[]
     creates cells to an empty <table>*/
-  var innerhtml=''
+  var innerhtml='';
   for (var i=0; i<size+2; i++) {
     innerhtml += "<tr>";
     for (var j=0; j<size+2; j++) {
@@ -121,7 +136,12 @@ function initClickListeners(tab){
       cell.addEventListener("click",getMakeActive());
     }
   }
+  restartbutton = document.getElementById('restart');
+  cluebutton = document.getElementById('clue');
+  restartbutton.addEventListener("click",getRestart(tab));
+  cluebutton.addEventListener("click",getClue(tab));
 }
+
 function initKeydownListener(size) {
   /*void -> void
     creates keyboard input callback*/
@@ -133,7 +153,7 @@ function Init(size) {
   var tab = document.querySelector("#gamediv"); // récupérer la zone de création du tableau
   tab = initInnerHTML(tab,size);                // créer le tableau aléatoire
   initClickListeners(tab);                      // rendre les cellules du tableau clickables
-  initKeydownListener(size);                    // écouter les touches appuyées
+  initKeydownListener(size);                   // écouter les touches appuyées
   return tab;
 }
 
