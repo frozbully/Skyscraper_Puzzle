@@ -80,11 +80,19 @@ function writeActive(cell,keycode,size){
 }
 function restart(tab){
   for (var i=0; i<tab.length; i++){
-    tab[i].textContent='';
+    cell = tab[i];
+    if (cell.id == "cell") {
+      cell.textContent='';
+    }
   }
 }
-function clue(tab){
 
+function over(tab){
+
+}
+
+function newGame(){
+  Init(4);//et mettre les arrows 
 }
 //function getters for addEventListener()
 function getMakeActive(){
@@ -99,9 +107,15 @@ function getRestart(tab){
   /*void -> function*/
   return function(){restart(tab);}
 }
-function getClue(tab){
+
+function getOver(tab){
   /*void -> function*/
-  return function(){clue(tab);}
+  return function(){over(tab);}
+}
+
+function getNewGame(tab){
+  /*void -> function*/
+  return function(){newGame(tab);}
 }
 
 //Init functions
@@ -137,9 +151,11 @@ function initClickListeners(tab){
     }
   }
   restartbutton = document.getElementById('restart');
-  cluebutton = document.getElementById('clue');
+  overbutton = document.getElementById('over');
+  newGamebutton = document.getElementById('newGame');
   restartbutton.addEventListener("click",getRestart(tab));
-  cluebutton.addEventListener("click",getClue(tab));
+  overbutton.addEventListener("click",getOver(tab));
+  newGamebutton.addEventListener("click",getNewGame());
 }
 
 function initKeydownListener(size) {
