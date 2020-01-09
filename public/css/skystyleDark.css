@@ -6,8 +6,7 @@
 body{
   background:url("/photos/skyscrpr.jpg");
   background-size: cover;
-  border: 10px;
-  overflow: hidden;
+  margin-bottom: 100px;
 }
 
 h1{
@@ -15,7 +14,9 @@ h1{
   color:  #2D383A;
   font-family: 'Maven Pro', sans-serif, bold;
   text-align: center;
-  margin-top: 10px;
+  position: absolute;
+  top: 20px;
+  left: 44%;
   margin-bottom: 20px;
 }
 
@@ -30,14 +31,10 @@ h1{
 }
 
 .buttons{
-  background-color: none;
   text-align: center;
-}
-
-
-
-.buttons a:visited{
-  color: #2D383A;
+  position: relative;
+  top: 32px;
+  left:5px;
 }
 
 #stop, #clear, #start{
@@ -53,20 +50,19 @@ h1{
  cursor : pointer;
 }
 
+
+
 .buttonsGrid{
   font-family: "Lato", sans-serif, bold;
-  background-color: none;
   text-align: center;
+  position:relative;
+  margin: 20px;
 }
 
-.buttonsGrid a:visited{
-  color: #2D383A;
-}
 
 #restart, #clue {
   display: inline-block;
   margin: auto;
-  margin-top: 50px;
   padding: 10px;
   color:  #2D383A;
   font-family: "Lato", sans-serif, bold;
@@ -77,9 +73,11 @@ h1{
 }
 
 #newGame, #over {
-  display: inline-block;
+  display:inline-block;
   margin: auto;
   padding: 10px;
+  position: relative;
+  top: -49px;
   color:  #2D383A;
   font-family: "Lato", sans-serif, bold;
   font-weight: 200;
@@ -88,15 +86,19 @@ h1{
   cursor : pointer;
 }
 
+#stop:hover , #clear:hover , #start:hover ,
+#restart:hover , #clue:hover , #newGame:hover ,
+#over:hover {
+  background-color:	#676767;
+  color:  hsla(175, 15%, 95%, 0.50);
+}
 
 #gamediv {
   background-color: hsla(175, 15%, 95%, 0);
   padding: 10px;
-  border-radius: 1px;
   margin: auto;
-  position: static;
-  border-style:none;
-  border-radius: 5px;
+  position: relative;
+  top: -24px;
   height: 440px;
   width: 440px;
 
@@ -114,7 +116,6 @@ th {
   opacity: 0.8;
   padding: 0;
   border-radius: 3px;
-  display: center;
 }
 #active {
   background-color:hsla(175, 15%, 95%, 0.79);
@@ -129,8 +130,9 @@ th {
 .menu{
   font-size:30px;
   font-weight: bolder;
-  padding: 10px;
-  margin-top: 5px;
+  position: absolute;
+  top: 25px;
+  width: fit-content;
   cursor:pointer;
   color:hsla(170, 5%, 95%, 1);
   font-family: 'Maven Pro', sans-serif, bold;
