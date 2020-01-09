@@ -1,17 +1,19 @@
+
+
 <div class="son">
 <audio src="son/Kerusu_Hatachi.mp3" style="display:none" id="player"></audio>
 <a href="#" ><img src="photos/volume.svg" width="20px" height="20px" alt="Lecture" id="volume"></a>
 <a href="#" ><img src="photos/mute.svg" width="20px" height="20px" alt="Pause" id="mute"></a>
 </div>
 
-  
+
   <div id ="open" class="menu" onclick="openNav()">&#9776; Menu</div>
       <div id="mySidenav" class="sidenav">
   <a src="js/skyscrpr.js" class="closebtn" onclick="closeNav()">&times;</a>
   <div class="content">
 
-<div id="MyBtn" onclick = "openOver()" >Rules</div>
- <div id="myOver" class="over">
+<div id="MyBtn" onclick = "openOver()"> Rules</div>
+ <div id="myOver" class="over" onclick = "closeOver()">
    <div class="over-content">
      <span class="close"  onclick = "closeOver()">&times;</span>
         <h2> Rules </h2>
@@ -25,20 +27,23 @@
      is equal to the value of the clue.
      Note that higher skyscrapers block the view
      of lower skyscrapers located behind them.</p>
+     <span class="subtext"> Good Luck ! </span>
 
  </div>
 </div>
 
   <a href="#">Levels</a>
+
   <a onclick="dropdown()">Language</a>
     <div id="myDropdown" class="drpdwn-content">
         <a href="/FR">French</a>
     </div>
+  <a href="#">Mode</a>
 
   </div>
 
 </div>
-
+<div id="top-elements">
 <div class="time" >
   <h1>
   <time>00:00:00</time>
@@ -49,7 +54,9 @@
 <div id="start"> Start </div>
 <div id="clear"> Clear </div>
   </div>
+</div>
 
+<div id="bottom-elements">
  <div class="buttonsGrid">
     <div id="restart"> Restart </div>
     <div id="clue"> Clue </div>
@@ -65,6 +72,8 @@
 
 
 <div class="buttonsGrid">
-    <div id="over"> Over </div>
+    <div id="over"> Done </div>
     <div id="newGame"> New Game </div>
+</div>
+
 </div>

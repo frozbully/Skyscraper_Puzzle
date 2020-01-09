@@ -70,23 +70,16 @@ function closeNav() {
 
 // Rules Modal~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-var overlay = document.getElementById("myOver");
+
 
 function openOver(){
-    overlay.style.display = "block";
+    document.getElementById("myOver").style.display = "block";
     document.getElementById("mySidenav").style.width = "0";
 
 }
 function closeOver() {
-    overlay.style.display = "none";
+    document.getElementById("myOver").style.display = "none";
     document.getElementById("open").style.visibility = "visible";
-}
-
-window.onclick = function(event) {
-  if (event.target == overlay) {
-    overlay.style.visibility = "hidden";
-    document.getElementById("open").style.visibility = "visible";
-  }
 }
 
 // Language menu~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -100,4 +93,3 @@ function dropdown() {
 
   }
 }
-
