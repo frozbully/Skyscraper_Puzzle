@@ -78,32 +78,7 @@ function writeActive(cell,keycode,size){
     }
   }
 }
-function restart(tab){
-  for (var i=0; i<tab.length; i++){
-    cell = tab[i];
-    if (cell.id == "cell") {
-      cell.textContent='';
-    }
-  }
-}
 
-function over(tab){
-  if (tabFull(tab)){
-    if (tabCheck(tab)){
-      alert(Victoire!);
-    }
-    else{
-
-    }
-  }
-  else {
-    alert(le tableau n'est pas totalement rempli, il reste des cases à completer);
-  }
-}
-
-function newGame(){
-  Init(4);//et mettre les arrows
-}
 //function getters for addEventListener()
 function getMakeActive(){
   /*void -> function*/
@@ -112,20 +87,6 @@ function getMakeActive(){
 function getWriteActive(size){
   /*void -> function*/
   return function(event){writeActive(activeCell,event.keyCode,size);};
-}
-function getRestart(tab){
-  /*void -> function*/
-  return function(){restart(tab);}
-}
-
-function getOver(tab){
-  /*void -> function*/
-  return function(){over(tab);}
-}
-
-function getNewGame(tab){
-  /*void -> function*/
-  return function(){newGame(tab);}
 }
 
 //Init functions
@@ -160,12 +121,6 @@ function initClickListeners(tab){
       cell.addEventListener("click",getMakeActive());
     }
   }
-  restartbutton = document.getElementById('restart');
-  overbutton = document.getElementById('over');
-  newGamebutton = document.getElementById('newGame');
-  restartbutton.addEventListener("click",getRestart(tab));
-  overbutton.addEventListener("click",getOver(tab));
-  newGamebutton.addEventListener("click",getNewGame());
 }
 
 function initKeydownListener(size) {
