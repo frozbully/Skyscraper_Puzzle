@@ -88,11 +88,21 @@ function restart(tab){
 }
 
 function over(tab){
+  if (tabFull(tab)){
+    if (tabCheck(tab)){
+      alert(Victoire!);
+    }
+    else{
 
+    }
+  }
+  else {
+    alert(le tableau n'est pas totalement rempli, il reste des cases à completer);
+  }
 }
 
 function newGame(){
-  Init(4);//et mettre les arrows 
+  Init(4);//et mettre les arrows
 }
 //function getters for addEventListener()
 function getMakeActive(){
