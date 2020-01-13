@@ -272,23 +272,21 @@ h2{
   font-weight: 400;
 }
 .over-content {
-  position: fixed;
+  position: absolute;
   background-color:hsla(175, 15%, 95%, 0.90) ;
   font-family: 'Montserrat', sans-serif;
   padding: 20px;
   padding-bottom: 20px;
-  margin: 400px 150px 200px 800px;
+ margin: 25% 15% 20% 50%;
   border: 1px solid #888;
   width: 90%;
   height: 70%;
-  font-size:25px;
+  font-size:2vw;
   font-weight: lighter;
   color: #676767;
   transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   overflow: auto;
-
-
   }
 .over-content > .subtext{
   padding: 30px;
