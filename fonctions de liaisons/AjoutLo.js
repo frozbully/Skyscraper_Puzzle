@@ -32,7 +32,7 @@ function over(tab){
       alert(Victoire!);
     }
     else{
-
+      alert(Il y a une erreur!);
     }
   }
   else {
