@@ -44,7 +44,7 @@ clear.onclick = function() {
 }
 
 // Bouton play
-
+/*
 document.getElementById('volume').onclick = function() {
   document.getElementById('mute').play();
   return false;
@@ -53,7 +53,7 @@ document.getElementById('volume').onclick = function() {
 document.getElementById('btnpause').onclick = function() {
   document.getElementById('player').pause();
   return false;
-}
+}*/
 
 // sidenavigation ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -82,14 +82,18 @@ function closeOver() {
     document.getElementById("open").style.visibility = "visible";
 }
 
-// Language menu~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Dropdown menu~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-function dropdown() {
-  var x = document.getElementById("myDropdown");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
+  var dropdown = document.getElementsByClassName("dropdown");
+  var i;
+  for (i = 0; i < dropdown.length; i++) {
+    dropdown[i].addEventListener("click", function() {
 
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+    dropdownContent.style.display = "none";
+    } else {
+    dropdownContent.style.display = "block";
+    }
+    });
   }
-}
