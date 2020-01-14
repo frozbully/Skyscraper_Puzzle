@@ -7,7 +7,7 @@ function makeActive(cell){
   /*HTMLElement -> void
     Change the activeCell to cell*/
   if (activeCell !== undefined) {
-    activeCell.id = '';
+    activeCell.id = 'cell';
   }
   activeCell = cell;
   activeCell.id = "active";
