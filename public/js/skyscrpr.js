@@ -27,7 +27,7 @@ function add() {
 function timer() {
     t = setTimeout(add, 1000);
 }
-timer();
+
 
 
 /* Start button */

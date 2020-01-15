@@ -1,3 +1,7 @@
+function initButtons() {
+  document.querySelector("#restart").onclick=function(){tabClear();};
+  document.querySelector("#newGame").onclick=function(){tabClear();showArrows(findArrows(newSolutionForce(gamesize),gamesize));stop.onclick();clear.onclick();start.onclick();}
+}
 var activeCell;
 var tharray = new Array;
 var arrows = new Array;
@@ -76,10 +80,12 @@ function initKeydownListener(size) {
 
 function Init(size) {
   /*int -> HTMLElement[]*/
+  //init a new display
   var tab = document.querySelector("#gamediv");   // récupérer la zone de création du tableau
   tab = initInnerHTML(tab,size);                  // créer le tableau aléatoire
   initClickListeners(tab);                        // rendre les cellules du tableau clickables
   initKeydownListener(size);                      // écouter les touches appuyées
+  initButtons()                                   // assigner les fonctions au boutons corresspondant
   tharray = document.querySelectorAll("#cell");
   arrows = document.querySelectorAll("#arrow");
   gamesize = size;
@@ -92,7 +98,7 @@ function showTab(tab){ //completer la description
   }
 }
 
-function showArrows(tab){ //completer la description
+function showArrows(tab){ //DEPRECATED used with tabutils' weird format
   var nn=0;
   var n = tab[0].length
   for (var i=0; i<tab.length; i++) {
@@ -119,6 +125,11 @@ function getTab(x, y){
 function setTab(x,y,value){
   /*int*int*int -> void*/
   tharray[x+y*gamesize].textContent = String(value);
+}
+function tabClear(){
+  for (var i = 0; i < tharray.length; i++) {
+    tharray[i].textContent = '';
+  }
 }
 //Get arrows
 function getTop(i){
@@ -384,8 +395,5 @@ function tabCheck(tab)
   return true;
 }
 
-//Main function
-function main() {
-  Init(4);
-}//Do not edit below this line
-main();
+//Main function ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Init(4);
