@@ -20,10 +20,10 @@ function writeActive(cell,keycode,size){
   /*HTMLElement * int -> void
     Changes the textContent of a cell*/
   if (cell !== undefined) {
-    if (keycode>96 && keycode<=96+size) {
-    cell.textContent = keycode-96;
+    if (keycode>0 && keycode<=size) {
+    cell.textContent = keycode;
     }
-    if (keycode === 96){
+    if (keycode == 0){
       cell.textContent = '';
     }
   }
@@ -36,7 +36,7 @@ function getMakeActive(){
 }
 function getWriteActive(size){
   /*void -> function*/
-  return function(event){writeActive(activeCell,event.keyCode,size);};
+  return function(event){writeActive(activeCell,event.key,size);};
 }
 
 //Init functions
