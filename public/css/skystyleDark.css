@@ -27,6 +27,12 @@ body{
   background-image: url("/photos/skyscrpr.jpg");
   background-size: cover;
   overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
 }
 
 
@@ -39,76 +45,45 @@ h1{
 
 .buttons{
   text-align: center;
+  display: flex;
 }
 
 #top-elements{
-  position: fixed;
-  top: 10px;
-  left: 40%;
-  width:fit-content;
+  width: fit-content;
+  margin: auto;
+  margin-bottom: 50px;
 }
 
 #bottom-elements{
-  display: inline-flex;
-  justify-content: space-around;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: row;
-  position: fixed;
-  left: 145px;
-  top: 200px;
 }
 
-#stop, #clear, #start{
- display: inline-block;
+#stop, #clear, #start,#restart, #clue, #newGame, #over{
+ display: flex;
  margin-bottom: 20px;
- padding: 5px;
- width: 110px;
+ padding: 10px;
+ margin: 10px;
  color:  #2D383A;
  font-family: 'Maven Pro', sans-serif;
  font-weight: 300;
- font-size: 20px;
+ font-size: 16px;
  background-color: hsla(175, 15%, 95%, 0.95);
  cursor : pointer;
+ align-items: center;
+ justify-content: center;
 }
-
-
 
 .buttonsGrid{
   font-family: 'Maven Pro', sans-serif;
   text-align: center;
   position:relative;
-  margin: 20px;
   font-weight: 300;
-}
-
-
-#restart, #clue {
-  display: inline-block;
-  position: relative;
-  top: 120px;
-  margin-bottom:32px;
-  width: 150px;
-  padding: 10px;
-  color:  #2D383A;
-  font-family: "Lato", sans-serif, bold;
-  font-weight: 200;
-  font-size: 20px;
-  background-color: hsla(175, 15%, 95%, 0.95);
-  cursor : pointer;
-}
-
-#newGame, #over {
-  display:inline-block;
-  position: relative;
-  top: 120px;
-  margin-bottom:30px;
-  width: 150px;
-  padding: 10px;
-  color:  #2D383A;
-  font-family: "Lato", sans-serif, bold;
-  font-weight: 200;
-  font-size: 20px;
-  background-color: hsla(175, 15%, 95%, 0.95);
-  cursor : pointer;
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
 }
 
 #stop:hover , #clear:hover , #start:hover ,
@@ -141,6 +116,7 @@ th {
   opacity: 0.8;
   padding: 0;
   border-radius: 3px;
+  font-family: 'Montserrat';
 }
 #active {
   background-color:hsla(175, 15%, 95%, 0.79);
@@ -156,7 +132,8 @@ th {
   font-size:30px;
   font-weight: bolder;
   position: absolute;
-  top: 25px;
+  top: 10px;
+  left: 10px;
   width: fit-content;
   cursor:pointer;
   color:hsla(170, 5%, 95%, 1);
@@ -232,6 +209,12 @@ th {
   .sidenav a, .sidenav #MyBtn {text-decoration: none; }
 }
 
+.son {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
 .over {
   display: none;
   position: fixed;
@@ -291,4 +274,16 @@ h2{
   color: #555;
   text-decoration: none;
   cursor: pointer;
+}
+
+@media screen and (max-width:700px) {
+    #bottom-elements {
+      flex-direction: column;
+    }
+    #top-elements {
+      margin-top: 70px;
+    }
+    .buttonsGrid{
+      flex-direction: row;
+    }
 }

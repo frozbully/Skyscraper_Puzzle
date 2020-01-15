@@ -430,6 +430,13 @@ function tabCheck(tab)
   return true;
 }
 
+console.log(document.querySelector("#over"))
+document.querySelector("#over").onclick = function () {
+  console.log("ok!");
+  console.log(tab);
+  alert(tabCheck(tab));
+}
+
 //Main function
 function main() {
   Init(4);

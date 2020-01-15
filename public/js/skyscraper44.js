@@ -395,5 +395,16 @@ function tabCheck(tab)
   return true;
 }
 
+document.querySelector("#over").onclick = function () {
+  result = tabCheck(tabOfRowsGet(tharrayRowsGet(tharray)));
+  if (result)
+    alert("Well done !");
+  else
+  {
+    tabHighlightErrors(tabOfRowsGet(tharrayRowsGet(tharray)));
+    //alert();
+  }
+}
+
 //Main function ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Init(4);
