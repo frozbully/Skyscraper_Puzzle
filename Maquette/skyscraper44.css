@@ -1,0 +1,22 @@
+#gamediv {
+  background-color: lightblue;
+  padding: 10px;
+  border-radius: 100px;
+}
+th {
+  height: 50px;
+  width: 50px;
+  background-color: white;
+  margin: 10px;
+  border-radius: 9px;
+}
+#active {
+  background-color: pink;
+}
+
+#corner {
+  background-color: lightblue;
+}
+#arrow {
+  border-radius: 50%;
+}

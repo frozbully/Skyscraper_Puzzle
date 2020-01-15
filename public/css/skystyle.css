@@ -1,0 +1,240 @@
+body{
+  background:url("/photos/skyscrpr.jpg");
+  background-size: cover;
+  border: 30px;
+  font-family: "Lato", sans-serif, bold;
+}
+
+h1{
+  display: block;
+  color:  #2D383A;
+  font-family: "Lato", sans-serif, bold;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.son {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#volume, #mute {
+  margin:20px;
+  margin-bottom: 0px;
+}
+
+.buttons{
+  font-family: "Lato", sans-serif, bold;
+  background-color: none;
+  text-align: center;
+
+}
+
+.buttons a:visited{
+  color: #2D383A;
+}
+
+#stop, #clear, #start{
+  display: inline-block;
+ margin: auto;
+ margin-bottom: 20px;
+ padding: 10px;
+ color:  #2D383A;
+  font-family: "Lato", sans-serif, bold;
+  font-weight: 200;
+  font-size: 20px;
+  background-color: hsla(175, 15%, 95%, 0.50);
+  cursor : pointer;
+}
+
+.buttonsGrid{
+  font-family: "Lato", sans-serif, bold;
+  background-color: none;
+  text-align: center;
+}
+
+.buttonsGrid a:visited{
+  color: #2D383A;
+}
+
+#restart, #clue {
+  display: inline-block;
+  margin: auto;
+  margin-top: 50px;
+  padding: 10px;
+  color:  #2D383A;
+  font-family: "Lato", sans-serif, bold;
+  font-weight: 200;
+  font-size: 20px;
+  background-color: hsla(175, 15%, 95%, 0.50);
+  cursor : pointer;
+}
+
+#newGame, #over {
+  display: inline-block;
+  margin: auto;
+  padding: 10px;
+  color:  #2D383A;
+  font-family: "Lato", sans-serif, bold;
+  font-weight: 200;
+  font-size: 20px;
+  background-color: hsla(175, 15%, 95%, 0.50);
+  cursor : pointer;
+}
+
+#gamediv {
+  background-color: hsla(175, 15%, 95%, 0);
+  padding: 20px;
+  border-radius: 1px;
+  margin: auto;
+  position: static;
+  border-style:none;
+  border-radius: 5px;
+  height: 440px;
+  width: 440px;
+
+}
+
+#corner {
+  background-color:hsla(175, 15%, 95%, 0);
+ }
+
+
+th {
+  height: 50px;
+  width: 50px;
+  background-color:	#676767;
+  opacity: 0.8;
+  padding: 10px;
+  border-radius: 3px;
+  display: center;
+}
+#active {
+  background-color:hsla(175, 15%, 95%, 0.79);
+}
+
+
+#arrow {
+  border-radius: 50%;
+}
+
+.menu{
+  font-size:30px;
+  margin-top: 10px;
+  cursor:pointer;
+  color:hsla(170, 5%, 95%, 1);
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: hsla(175, 15%, 95%, 0.90);
+  overflow-x: hidden;
+  z-index: 1;
+  transition: 0.5s;
+}
+
+.content{
+    margin-top: 130px;
+    font-size: 30px;
+    font-family: "Lato", sans-serif, bold;
+    font-weight: 900;
+
+}
+
+.sidenav a , .sidenav #MyBtn{
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  color: #2D383A ;
+  display: block;
+  font-weight: 300;
+  cursor: pointer;
+
+}
+
+.sidenav a:hover, .drpdwn-content a:hover, .sidenav #MyBtn:hover{
+  color:#818181;
+}
+
+.drpdwn-content a{
+  padding: 8px 8px 8px 50px;
+  text-decoration: none;
+  color: #2D383A ;
+  display: block;
+  font-weight: 300;
+}
+
+#myDropdown{
+  display: none;
+}
+
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  cursor: pointer;
+}
+
+@media screen and (max-height: 600px) {
+  .sidenav {
+    padding-top: 20px;
+    }
+  .sidenav a, .sidenav #MyBtn {text-decoration: none; }
+}
+
+.over {
+  display: none;
+  position: fixed;
+  z-index:2;
+  width: 100%;
+   height: 100%;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+h2{
+  font-family:  "Lato" ;
+  font-weight: bolder;
+  font-size: 60px;
+  text-align: center;
+}
+.over-content {
+  position: fixed;
+  background-color: black;
+  font-family:  "Lato";
+  padding: 20px;
+  margin:  600px 300px 500px
+  border: 1px solid #888;
+  width: 50%;
+  height: 50%;
+  font-size:20px;
+  color: white;
+  transform: translate(-50%,-50%);
+ -ms-transform: translate(-50%,-50%);
+}
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}

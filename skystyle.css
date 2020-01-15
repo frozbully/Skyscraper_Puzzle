@@ -1,0 +1,136 @@
+body{
+  background: url("https://images7.alphacoders.com/329/329297.jpg");
+  background-size: cover;
+  border: 30px;
+  font-family: "Lato", sans-serif, bold;
+}
+
+h1{
+  display: block;
+  color:  #2D383A;
+  font-family: "Lato", sans-serif, bold;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.buttons{
+  font-family: "Lato", sans-serif, bold;
+  background-color: none;
+  text-align: center;
+  
+}
+
+
+
+.buttons a:visited{
+  color: #2D383A;
+}
+
+#stop, #clear, #start{
+  display: inline-block;
+ margin: auto;
+ padding: 10px;
+ color:  #2D383A;
+  font-family: "Lato", sans-serif, bold;
+  font-weight: 200;
+  font-size: 20px;
+  background-color: hsla(175, 15%, 95%, 0.50);
+}
+
+
+#gamediv {
+  background-color:	hsla(175, 15%, 95%, 0);
+  padding: 10px;
+  border-radius: 1px;
+  margin: auto; 
+  position: static;
+  border-style:none;
+   border-radius: 5px;
+    height: 440px;
+    width: 440px;
+        
+}
+
+#corner {
+  background-color:hsla(175, 15%, 95%, 0);
+ } 
+  
+  
+th {
+  height: 50px;
+  width: 50px;
+  background-color: white;
+  opacity: 0.8;
+  padding: 10px;
+  border-radius: 3px;
+  display: center;
+}
+#active {
+  background-color:hsla(175, 15%, 95%, 0.79);
+}
+
+
+#arrow {
+  border-radius: 50%;
+}
+
+.menu{
+  font-size:30px;
+  margin-top: 10px;
+  cursor:pointer;
+  color:hsla(170, 5%, 95%, 1);
+ 
+  
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: hsla(175, 15%, 95%, 0.90);
+  overflow-x: hidden;
+  transition: 0.5s;
+ 
+}
+
+.content{
+    margin-top: 130px;
+    font-size: 30px;
+    font-family: monospace; 
+    font-weight: 900;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+  font-weight: 300;
+  
+}
+
+.sidenav a:hover {
+  color: #2D383A;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 600px) {
+  .sidenav {
+    padding-top: 20px;
+    }
+  .sidenav a {text-decoration: none; }
+}
+
+
+
